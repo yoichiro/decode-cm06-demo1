@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <title>CM06 Demonstration Web App on de:code 2019</title>
+</head>
+
+<body>
+  <% events.forEach(function (event, key) { %>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title"><%= event.subject %></h5>
+      <h6 class="card-subtitle"><%= event.location %></h6>
+      <p class="card-text">Start Time: <%= event.start %></p>
+    </div>
+  </div>
+  <% }); %>
+
+  <div class="card"><div class="card-body">
+  <form action="/" method="post">
+    <div class="form-group">
+      <label for="eventSubject">Subject</label>
+      <input type="text" class="form-control" id="eventSubject" name="subject" placeholder="Enter subject">
+    </div>
+    <div class="form-group">
+      <label for="eventLocation">Location</label>
+      <select class="form-control" id="eventLocation" name="location">
+        <option value="Adams@M365x850511.onmicrosoft.com/Conf Room Adams">Conf Room Adams</option>
+        <option value="Baker@M365x850511.onmicrosoft.com/Conf Room Baker">Conf Room Baker</option>
+        <option value="Crystal@M365x850511.onmicrosoft.com/Conf Room Crystal">Conf Room Crystal</option>
+        <option value="Hood@M365x850511.onmicrosoft.com/Conf Room Hood">Conf Room Hood</option>
+        <option value="Rainier@M365x850511.onmicrosoft.com/Conf Room Rainier">Conf Room Rainier</option>
+        <option value="Stevens@M365x850511.onmicrosoft.com/Conf Room Stevens">Conf Room Stevens</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="eventStartDate">Start Date</label>
+      <select class="form-control" id="eventStartDate" name="startDate">
+        <% for (let i = 0; i < 7; i++) { %>
+        <% const date = new Date(Date.now() + i * 24 * 60 * 60 * 1000); %>
+        <% const formattedDate = `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`; %>
+        <option value="<%= formattedDate %>"><%= formattedDate %></option>
+        <% } %>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="eventStartTime">Start Time</label>
+      <select class="form-control" id="eventStartTime" name="startTime">
+        <% for (let i = 0; i < 24; i++) { %>
+        <option value="<%= i %>:00"><%= i %>:00</option>
+        <option value="<%= i %>:30"><%= i %>:30</option>
+        <% } %>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="eventLength">Length</label>
+      <select class="form-control" id="eventLength" name="length">
+        <option value="30">30 minutes</option>
+        <option value="60">1 hour</option>
+        <option value="90">1 hour and half</option>
+        <option value="120">2 hours</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  </div></div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
