@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
     if (accessToken) {
         renderForm(req, res)
     } else {
-        redirectToAuthorization(req, res)
+        renderLoginPage(req, res)
     }
 })
 
@@ -56,7 +56,7 @@ const renderForm = (req: express.Request, res: express.Response): void => {
     })
 }
 
-const redirectToAuthorization = (req: express.Request, res: express.Response): void => {
+const renderLoginPage = (req: express.Request, res: express.Response): void => {
     const endpointUrl = `${AUTH_BASE_URL}/authorize`
     const queryParams = {
         'client_id': CLIENT_ID,
@@ -70,8 +70,9 @@ const redirectToAuthorization = (req: express.Request, res: express.Response): v
     Object.keys(queryParams).forEach(key => {
         query[key] = queryParams[key]
     })
-    console.log(targetUrl)
-    res.redirect(url.format(targetUrl))
+    res.render('login.ejs', {
+        authorizationUrl: url.format(targetUrl)
+    })
 }
 
 app.get('/callback', (req, res) => {
