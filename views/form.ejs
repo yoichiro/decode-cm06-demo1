@@ -17,7 +17,7 @@
     <div class="card-body">
       <h5 class="card-title"><%= event.subject %></h5>
       <h6 class="card-subtitle"><%= event.location %></h6>
-      <p class="card-text">Start Time: <%= event.start %></p>
+      <p class="card-text">開始日時: <%= event.start %></p>
     </div>
   </div>
   <% }); %>
@@ -25,11 +25,11 @@
   <div class="card"><div class="card-body">
   <form action="/" method="post">
     <div class="form-group">
-      <label for="eventSubject">Subject</label>
+      <label for="eventSubject">会議の名前</label>
       <input type="text" class="form-control" id="eventSubject" name="subject" placeholder="Enter subject">
     </div>
     <div class="form-group">
-      <label for="eventLocation">Location</label>
+      <label for="eventLocation">場所</label>
       <select class="form-control" id="eventLocation" name="location">
         <option value="Adams@M365x850511.onmicrosoft.com/Conf Room Adams">Conf Room Adams</option>
         <option value="Baker@M365x850511.onmicrosoft.com/Conf Room Baker">Conf Room Baker</option>
@@ -40,7 +40,7 @@
       </select>
     </div>
     <div class="form-group">
-      <label for="eventStartDate">Start Date</label>
+      <label for="eventStartDate">開始日付</label>
       <select class="form-control" id="eventStartDate" name="startDate">
         <% for (let i = 0; i < 7; i++) { %>
         <% const date = new Date(Date.now() + i * 24 * 60 * 60 * 1000); %>
@@ -50,7 +50,7 @@
       </select>
     </div>
     <div class="form-group">
-      <label for="eventStartTime">Start Time</label>
+      <label for="eventStartTime">開始時間</label>
       <select class="form-control" id="eventStartTime" name="startTime">
         <% for (let i = 0; i < 24; i++) { %>
         <option value="<%= i %>:00"><%= i %>:00</option>
@@ -59,15 +59,15 @@
       </select>
     </div>
     <div class="form-group">
-      <label for="eventLength">Length</label>
+      <label for="eventLength">会議の長さ</label>
       <select class="form-control" id="eventLength" name="length">
-        <option value="30">30 minutes</option>
-        <option value="60">1 hour</option>
-        <option value="90">1 hour and half</option>
-        <option value="120">2 hours</option>
+        <option value="30">30分間</option>
+        <option value="60">1時間</option>
+        <option value="90">1時間30分</option>
+        <option value="120">2時間</option>
       </select>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">登録</button>
   </form>
   </div></div>
 
